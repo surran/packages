@@ -1,0 +1,10 @@
+{
+  "name": "@surran/events",
+  "version": "0.1.0",
+  "main": "src/eventLogging.js",
+  "repository" : {
+    "type" : "git",
+    "url": "ssh://git@github.com/surran/packages.git",
+    "directory": "packages/name"
+  }
+}
