@@ -1,0 +1,33 @@
+{
+  "name": "@surran/footer",
+  "version": "0.1.0",
+  "repository" : {
+    "type" : "git",
+    "url": "ssh://git@github.com/surran/packages.git",
+    "directory": "packages/name"
+  },
+  "peer-dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1",
+    "styled-components": "^5.1.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
