@@ -1,17 +1,17 @@
 const eventsStore = {}
   
-export const initializeEvents = () => {
+const initializeEvents = () => {
     const d = new Date();
     eventsStore.siteStartTime = d.getTime();
     eventsStore.pageStartTime = eventsStore.siteStartTime;
 }
 
-export const pauseEvents = () => {
+const pauseEvents = () => {
     const d = new Date();
     eventsStore.pauseStartTime = d.getTime()
 }
 
-export const resumeEvents = () => {
+const resumeEvents = () => {
     if (eventsStore.pauseStartTime !== undefined)
     {
         const d = new Date();
@@ -22,11 +22,11 @@ export const resumeEvents = () => {
     }
 }
 
-export const setLastUIElement = (elId) => {
+const setLastUIElement = (elId) => {
     eventsStore.lastUIElement = elId
 }
 
-export const pageViewEvent = () => {
+const pageViewEvent = () => {
     const data = {type: "P", previousPage: eventsStore.previousPage}
     const d = new Date();  
     logEvent(data)
@@ -34,7 +34,7 @@ export const pageViewEvent = () => {
     eventsStore.pageStartTime = d.getTime();
 }
 
-export const exitEvent = () => {
+const exitEvent = () => {
     const data = {type: "E", previousPage: eventsStore.previousPage}
     logEvent(data)
 }
@@ -66,7 +66,7 @@ function getCookie(cname) {
     return "";
   }
 
-export const logEvent = (data) => {
+const logEvent = (data) => {
     if (eventsStore.siteStartTime) {
         const {type, previousPage}  = data
         const resWidth = window.screen.width
@@ -86,8 +86,17 @@ export const logEvent = (data) => {
         data = {type, resWidth, resHeight, clientHeight, clientWidth, 
                 url, tz, tStamp, tSite, tPage, platform, anchorId, previousPage}
         //console.log(data)
-        if (getCookie("mode") !== "dev")
-            postData("/api/event/terminalNotes", data)
+        if (getCookie("mode") !== "dev") {
+          const hostFragments = window.location.host.split(".")
+          let eventDB = (hostFragments.length == 3) ? 
+                          hostFragments[1] :
+                          (hostFragments.length == 2) ? 
+                          hostFragments[0] : 
+                          "events"
+          if (eventDB == "terminalnotes") eventDB = "terminalNotes"
+          if (eventDB == "suryaranjanshandil") eventDB = "srs"
+          postData(`/api/event/${eventDB}`, data)
+        }
         else
             console.log(data)
     }
@@ -95,7 +104,7 @@ export const logEvent = (data) => {
 
 
   // Example POST method implementation:
-  export async function postData(url = '', data = {}) {
+async function postData(url = '', data = {}) {
     // Default options are marked with *
     let res = false
     const response = await fetch(url, {
@@ -119,3 +128,16 @@ export const logEvent = (data) => {
     return res
   }
   
+export { 
+// EventLogger Functions
+  pageViewEvent,
+  exitEvent,
+// Utility Functions
+  initializeEvents, // compulsory to start timer
+  pauseEvents,
+  resumeEvents,
+  setLastUIElement,
+// base class Functions  
+  logEvent,
+  postData
+}

@@ -1,7 +1,7 @@
 {
-  "name": "@surran/footer",
-  "version": "0.1.4",
-  "main": "src/Footer.js",
+  "name": "@surran/meta-tags",
+  "version": "0.1.2",
+  "main": "src/MetaTags.js",
   "repository" : {
     "type" : "git",
     "url": "ssh://git@github.com/surran/packages.git",
@@ -10,10 +10,8 @@
   "peerDependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-helmet": "^5.2.1",
     "styled-components": "^5.1.1",
     "@surran/events": "^0.1.0"
-  },
-  "resolutions": {
-    "babel-core": "7.0.0-bridge.0"
   }
 }
