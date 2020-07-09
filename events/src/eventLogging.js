@@ -95,7 +95,7 @@ const logEvent = (data) => {
                           "events"
           if (eventDB == "terminalnotes") eventDB = "terminalNotes"
           if (eventDB == "suryaranjanshandil") eventDB = "srs"
-          postData(`/api/event/${eventDB}`, data)
+          postData(`https://terminalnotes.com/api/event/${eventDB}`, data)
         }
         else
             console.log(data)

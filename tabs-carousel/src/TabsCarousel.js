@@ -50,7 +50,6 @@ function ScrollableTabs ({tabHandlesData, currentUrlHandle, location}) {
       })
   }
 
-  console.log(location)
   return (<TabsBar id="containerBar">
             <HeaderBar id="sliderBar">
                 {generateTabHandles({tabHandlesData, currentUrlHandle, type: "Scrollable"})}
@@ -67,7 +66,6 @@ function ScrollableTabs ({tabHandlesData, currentUrlHandle, location}) {
 }
 
 function StationaryTabs ({tabHandlesData, currentUrlHandle}) {
-  //console.log(location)
   return(<HeaderBar>
           {generateTabHandles({tabHandlesData, currentUrlHandle, type: "Stationary"})}
          </HeaderBar>)
@@ -88,7 +86,7 @@ export default withRouter(Tabs)
 
 const HeaderBar = styled.div`
   padding: 0px 40px 0px 0px;
-  width: 600px;
+  width: max-content;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 `
 const TabsBar = styled.div`

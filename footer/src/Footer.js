@@ -12,9 +12,9 @@ function Footer({
                         type: "text",
                         value: "Developed by "},
                      {
-                        type: "link",
+                        type: "anchor",
                         value: "Surya Ranjan Shandil",
-                        to: "/founder",
+                        to: "https://terminalnotes.com/founder",
                      },
                      {
                          type: "icon",
