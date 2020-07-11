@@ -10,10 +10,7 @@ jobs:
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
-#         scope: '@surran'
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GPR_TOKEN}}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          scope: '@surran'
 # This is where I would run my linting, unit tests, e2e...
 
       - name: Setup GIT
@@ -26,7 +23,12 @@ jobs:
           cd footer
           npm version patch
           git push https://${{secrets.GPR_TOKEN}}@github.com/surran/packages
-
+          
+      - name: Authenticate with GitHub package registry
+        run: |
+          cd footer
+          echo "//npm.pkg.github.com:_authToken=${{ secrets.GPR_TOKEN }}" >
+          ~/.npmrc
 
 # Mock generation of production build then publish package
       - name: Build & Publish package
