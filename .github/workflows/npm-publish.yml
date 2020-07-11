@@ -22,7 +22,13 @@ jobs:
         run: |
           cd footer
           npm version patch
-          git push https://${{secrets.GPR_TOKEN}}@github.com/surran/packages
+          cd ../events
+          npm version patch
+          cd ../meta-tags
+          npm version patch
+          cd ../tabs-carousel
+          npm version patch
+          git push https://${{secrets.GITHUB_TOKEN}}@github.com/surran/packages
           
       - name: Authenticate with GitHub package registry
         run: |
@@ -32,6 +38,12 @@ jobs:
       - name: Build & Publish package
         run: |
           cd footer
+          npm publish
+          cd ../events
+          npm publish
+          cd ../meta-tags
+          npm publish
+          cd ../tabs-carousel
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GPR_TOKEN}}
