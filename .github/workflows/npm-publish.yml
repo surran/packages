@@ -1,37 +1,7 @@
 on: [push]
 
-jobs:
-  increment-semver-job:
-    runs-on: ubuntu-latest
-    name: A job to increment version of all packages
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v1
+# This is where I would run my linting, unit tests, e2e..
 
-      - name: Increment Step Patch
-        id: increment-semver-patch
-        uses: Benbentwo/increment-semver@master
-        with:
-          version-level: '-p'
-
-      - name: Increment Step Minor
-        id: increment-semver-minor
-        uses: Benbentwo/increment-semver@master
-        with:
-          version-level: '-m'
-
-      - name: Increment Step Major
-        id: increment-semver-major
-        uses: Benbentwo/increment-semver@master
-        with:
-          version-level: '-M'
-
-      - name: Get the output version
-        run: |
-          echo "The new patch version was ${{ steps.increment-semver-patch.outputs.version }}"
-#          echo "The new minor version was ${{ steps.increment-semver-minor.outputs.version }}"
-#          echo "The new Major version was ${{ steps.increment-semver-major.outputs.version }}"
- 
   publish-gpr:
     needs: increment-semver-job
     runs-on: ubuntu-latest
@@ -41,7 +11,26 @@ jobs:
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
-      - run: npm ci
-      - run: npm publish
+          scope: '@surran'
+# This is where I would run my linting, unit tests, e2e...
+
+      - name: Setup GIT
+        run: |
+          git switch -c master
+          git config --global user.email "suryaran@gmail.com"
+          git config --global user.name "surran"
+
+      - name: Bump version
+        run: |
+          cd footer
+          npm version patch
+          git push https://${{secrets.GPR_TOKEN}}@github.com/surran/packages
+
+
+# Mock generation of production build then publish package
+      - name: Build & Publish package
+        run: |
+          npm publish
+
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.GPR_TOKEN}}
