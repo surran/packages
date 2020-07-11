@@ -11,6 +11,8 @@ jobs:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
           scope: '@surran'
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GPR_TOKEN}}  
 # This is where I would run my linting, unit tests, e2e...
 
       - name: Setup GIT
