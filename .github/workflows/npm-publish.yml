@@ -28,6 +28,7 @@ jobs:
           npm version patch
           cd ../tabs-carousel
           npm version patch
+          git commit -a -m "Update package.json with latest package versions"
           git push https://${{secrets.GITHUB_TOKEN}}@github.com/surran/packages
           
       - name: Authenticate with GitHub package registry
