@@ -27,8 +27,7 @@ jobs:
       - name: Authenticate with GitHub package registry
         run: |
           cd footer
-          echo "//npm.pkg.github.com:_authToken=${{ secrets.GPR_TOKEN }}" >
-          ~/.npmrc
+          echo "//npm.pkg.github.com:_authToken=${{ secrets.GPR_TOKEN }}" > ~/.npmrc
 
 # Mock generation of production build then publish package
       - name: Build & Publish package
