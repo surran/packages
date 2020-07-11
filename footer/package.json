@@ -4,7 +4,7 @@
   "main": "src/Footer.js",
   "repository": {
     "type": "git",
-    "url": "ssh://git@github.com/surran/packages.git",
+    "url":  "ssh://git@github.com/surran/packages.git",
     "directory": "packages/name"
   },
   "peerDependencies": {
