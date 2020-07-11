@@ -10,7 +10,7 @@ jobs:
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
-          scope: '@surran'
+#         scope: '@surran'
         env:
           NODE_AUTH_TOKEN: ${{secrets.GPR_TOKEN}}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
