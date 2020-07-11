@@ -1,0 +1,38 @@
+on: [push]
+
+# This is where I would run my linting, unit tests, e2e..
+jobs:
+  publish-gpr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://npm.pkg.github.com/
+          scope: '@surran'
+# This is where I would run my linting, unit tests, e2e...
+
+      - name: Setup GIT
+        run: |
+          git config --global user.email "suryaran@gmail.com"
+          git config --global user.name "surran"
+
+      - name: Bump version
+        run: |
+          cd footer
+          npm version patch
+          git push https://${{secrets.GPR_TOKEN}}@github.com/surran/packages
+          
+      - name: Authenticate with GitHub package registry
+        run: |
+          echo "//npm.pkg.github.com:_authToken=${{ secrets.GPR_TOKEN }}" > ~/footer/.npmrc
+
+# Mock generation of production build then publish package
+      - name: Build & Publish package
+        run: |
+          cd footer
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GPR_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
