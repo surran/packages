@@ -12,7 +12,8 @@ jobs:
           registry-url: https://npm.pkg.github.com/
           scope: '@surran'
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GPR_TOKEN}}  
+          NODE_AUTH_TOKEN: ${{secrets.GPR_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 # This is where I would run my linting, unit tests, e2e...
 
       - name: Setup GIT
@@ -32,6 +33,6 @@ jobs:
         run: |
           cd footer
           npm publish
-
         env:
           NODE_AUTH_TOKEN: ${{secrets.GPR_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
