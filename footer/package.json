@@ -1,6 +1,6 @@
 {
   "name": "@surran/footer",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "main": "src/Footer.js",
   "repository": {
     "type": "git",
