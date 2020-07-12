@@ -1,10 +1,10 @@
 {
   "name": "@surran/footer",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "main": "src/Footer.js",
   "repository": {
     "type": "git",
-    "url":  "ssh://git@github.com/surran/packages.git",
+    "url": "ssh://git@github.com/surran/packages.git",
     "directory": "packages/name"
   },
   "peerDependencies": {

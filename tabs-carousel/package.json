@@ -1,6 +1,6 @@
 {
   "name": "@surran/tabs-carousel",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "main": "src/TabsCarousel.js",
   "repository": {
     "type": "git",
