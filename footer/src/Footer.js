@@ -32,7 +32,7 @@ function Footer({
         const {type, value, to, onClick, href} = entity
         if (type == "text") return (<span>{value}</span>)
         if (type == "link") return (<Link to={to} onClick={() => setLastUIElement("F")} >{value}</Link>)
-        if (type == "anchor") return (<a style={{textDecoartion: "none"}} href={href} target="_blank">{value}</a>)
+        if (type == "anchor") return (<a style={{textDecoration: "none"}} href={href} target="_blank">{value}</a>)
         if (type == "icon") {
             if (value == "twitterIcon") return (<TwitterIcon />)
         }
