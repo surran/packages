@@ -14,7 +14,7 @@ function Footer({
                      {
                         type: "anchor",
                         value: "Surya Ranjan Shandil",
-                        to: "https://terminalnotes.com/founder",
+                        href: "https://terminalnotes.com/founder",
                      },
                      {
                          type: "icon",
