@@ -104,7 +104,7 @@ const HeaderButton = styled(Link)`
   color: ${props => props.pressed ? "#111111" : "hsla(0, 0%, 6.7%, 0.6)"};
   border-bottom: ${props => props.pressed ? "3px solid #111111" : "none"};;
   cursor: pointer;
-  font-size: 14px
+  font-size: 14px;
   text-decoration: none;
   //font-family: "Roboto", "Noto", sans-serif;
   font-weight: 500;
