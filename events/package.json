@@ -1,6 +1,6 @@
 {
   "name": "@surran/events",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "main": "src/eventLogging.js",
   "repository": {
     "type": "git",
