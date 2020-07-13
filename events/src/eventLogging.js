@@ -95,7 +95,7 @@ const logEvent = (data) => {
                           "events"
           if (eventDB == "terminalnotes") eventDB = "terminalNotes"
           if (eventDB == "suryaranjanshandil") eventDB = "srs"
-          postData(`https://terminalnotes.com/api/event/${eventDB}`, data)
+          postData(`/api/event/${eventDB}`, data)
         }
         else
             console.log(data)
@@ -107,6 +107,7 @@ const logEvent = (data) => {
 async function postData(url = '', data = {}) {
     // Default options are marked with *
     let res = false
+    console.log(data)
     const response = await fetch(url, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
