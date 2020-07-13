@@ -1,6 +1,6 @@
 {
   "name": "@surran/meta-tags",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "main": "src/MetaTags.js",
   "repository": {
     "type": "git",
