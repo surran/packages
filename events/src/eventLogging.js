@@ -30,7 +30,7 @@ const pageViewEvent = () => {
     const data = {type: "P", previousPage: eventsStore.previousPage}
     const d = new Date();  
     logEvent(data)
-    eventsStore.previousPage = window.location.pathname
+    eventsStore.previousPage = window.location.href
     eventsStore.pageStartTime = d.getTime();
 }
 
