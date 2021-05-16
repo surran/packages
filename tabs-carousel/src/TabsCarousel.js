@@ -3,17 +3,18 @@ import { Link , withRouter } from "react-router-dom";
 import styled from 'styled-components'
 import { setLastUIElement } from "@surran/events"
 
-function generateTabHandles({tabHandlesData, currentUrlHandle, type}) {
-
+function generateTabHandles({tabHandlesData, currentUrlHandle, type, options={}}) {
+  const {hashParam} = options
   let pressedFound = false;
   const tabHandles = tabHandlesData.map(tabHandle => {
     const { title, handle  } = tabHandle
     const pressed = !pressedFound && currentUrlHandle === handle
+    const to = queryParam ? `#${hashParam}` : `/${handle}`
     if (pressed)
         pressedFound = true
     return (<HeaderButton onClick={() => setLastUIElement("H")}
                           key={type + handle} 
-                          to={`/${handle}`} 
+                          to={to} 
                           pressed={pressed}>
               {title.toUpperCase()}
             </HeaderButton>)})

@@ -74,7 +74,7 @@ const logEvent = (data) => {
         const clientWidth = document.body.clientWidth
         const clientHeight = document.body.clientHeight
 
-        const url = window.location.pathname
+        const url = window.location.href
         const d = new Date();
         const tz = d.getTimezoneOffset();
         const tStamp = Math.round((d.getTime() - 1587455104934)/1000) // seconds from when is started event logging//d.toLocaleString();
